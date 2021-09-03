@@ -43,10 +43,10 @@ A _"resetdb"_ script exists that allows you to reset the database to its origina
 
 Inside `api/projects/projects-router.js` build the following endpoints:
 
-- [ ] `[GET] /api/projects`
+- [X] `[GET] /api/projects`
   - Returns an array of projects as the body of the response.
   - If there are no projects it responds with an empty array.
-- [ ] `[GET] /api/projects/:id`
+- [X] `[GET] /api/projects/:id`
   - Returns a project with the given `id` as the body of the response.
   - If there is no project with the given `id` it responds with a status code 404.
 - [ ] `[POST] /api/projects`
@@ -84,7 +84,7 @@ Inside `api/actions/actions-router.js` build endpoints for performing CRUD opera
 
 #### Middleware functions
 
-- [ ] Write at least two middleware functions for this API, and consume them in the proper places of your code.
+- [X] Write at least two middleware functions for this API, and consume them in the proper places of your code.
 
 ### Database Schemas
 
@@ -147,7 +147,12 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+  ANSWER: The core feature of Node.js is to write server code or web services. Express is a Node.js module and Express' core features include building web apps, RESTful web services, serving static content, and such. It's useful because it makes the benefits way more simpler, compatible, and extensible.
 1. Understand and explain the use of Middleware.
+  ANSWER: Middleware are functions that help build apps more efficeintly. It's like the connective tissue betweens apps. data, and users.
 1. The basic principles of the REST architectural style.
+  ANSWER: The principles are: A. everything is a resource. B. each resource is accessible via a unique URL. C. resources can have multiple representations. D. communication happens over a stateless protocol (HTTP). E. resource management happens via HTTP methods. 
 1. Understand and explain the use of Express Routers.
+  ANSWER: An Express Router is like a mini Express app in the sense that it has its own routing and middleware. However, it needs to exist inside an Express app. They can be written however we want and add complexity to our Web API. It can help break our server.js file into smallers bits and make our app way easier to maintain. 
 1. Describe tooling used to manually test the correctness of an API.
+  ANSWER: I'm assuming this means tools like Postman. Postman is a tool that allows fullc ontrol when making requests. It's really easy to change the HTTP method used, adding JSON data to the body as well as form data, headers, and examining the response. 
