@@ -24,8 +24,16 @@ router.get('/:id', validateProjectId, (req, res, next) => {
 
 // .post()
 
+router.post('/', validateProject, (req, res, next) => {
+  Project.insert({ name: req.name, description: req.description })
+    .then(newProject => {
+      res.status(201).json(newProject)
+      // console.log(newProject)
+    })
+    .catch(next)
+})
 
-
+// .put()
 
 
 
