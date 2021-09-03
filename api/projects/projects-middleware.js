@@ -23,7 +23,7 @@ async function validateProjectId(req, res, next) {
 
 function validateProject(req, res, next) {
   const { name, description, completed } = req.body
-  if (!name || !name.trim() || !description || !description.trim() || !completed) {
+  if (!name || !description || !completed) {
     res.status(400).json({
       message: 'You seem to be missing the required input fields'
     })

@@ -21,9 +21,11 @@ async function validateActionId(req, res, next) {
   }
 }
 
+// i don't think there should be .trim()'s because they'll need spaces? take them out
+
 function validateAction(req, res, next) {
   const { description, notes, completed } = req.body
-  if (!description || !description.trim() || !notes || !notes.trim() || !completed) {
+  if (!description || !notes || !completed) {
     res.status(400).json({
       message: 'You are missing the required input fields'
     })

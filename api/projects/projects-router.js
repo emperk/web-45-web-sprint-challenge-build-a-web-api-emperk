@@ -25,7 +25,7 @@ router.get('/:id', validateProjectId, (req, res, next) => {
 // .post()
 
 router.post('/', validateProject, (req, res, next) => {
-  Project.insert({ name: req.name, description: req.description })
+  Project.insert({ name: req.name, description: req.description, completed: req.completed })
     .then(newProject => {
       res.status(201).json(newProject)
       // console.log(newProject)
@@ -36,7 +36,7 @@ router.post('/', validateProject, (req, res, next) => {
 // .put()
 
 router.put('/:id', validateProjectId, validateProject, (req, res, next) => {
-  Project.update(req.params.id, { name: req.name, description: req.description })
+  Project.update(req.params.id, { name: req.name, description: req.description, completed: req.completed })
     .then(updatedProject => {
       res.json(updatedProject)
     })
@@ -65,5 +65,6 @@ router.get('/:id/actions', validateProjectId, async (req, res, next) => {
   }
 })
 
+// oh my god i have no idea why these stupid tests aren't passing i yield 
 
 module.exports = router;

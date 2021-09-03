@@ -23,7 +23,7 @@ router.get('/:id', validateActionId, (req, res, next) => {
 // .post()
 
 router.post('/', validateAction, (req, res, next) => {
-  Action.insert({ description: req.description, notes: req.notes })
+  Action.insert({ description: req.description, notes: req.notes, completed: req.completed })
     .then(newAction => {
       res.status(201).json(newAction)
     })
@@ -33,7 +33,7 @@ router.post('/', validateAction, (req, res, next) => {
 // .put()
 
 router.put('/:id', validateActionId, validateAction, (req, res, next) => {
-  Action.update(req.params.id, { description: req.description, notes: req.notes })
+  Action.update(req.params.id, { description: req.description, notes: req.notes, completed: req.completed })
     .then(updatedAction => {
       res.json(updatedAction)
     })
