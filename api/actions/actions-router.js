@@ -20,7 +20,36 @@ router.get('/:id', validateActionId, (req, res, next) => {
   res.json(req.action);
 })
 
+// .post()
 
+router.post('/', validateAction, (req, res, next) => {
+  Action.insert({ description: req.description, notes: req.notes })
+    .then(newAction => {
+      res.status(201).json(newAction)
+    })
+    .catch(next)
+})
+
+// .put()
+
+router.put('/:id', validateActionId, validateAction, (req, res, next) => {
+  Action.update(req.params.id, { description: req.description, notes: req.notes })
+    .then(updatedAction => {
+      res.json(updatedAction)
+    })
+    .catch(next)
+})
+
+// .delete()
+
+router.delete('/:id', validateActionId, async (req, res, next) => {
+  try {
+    await Action.remove(req.params.id)
+    res.json(req.action)
+  } catch (err) {
+    next(err)
+  }
+})
 
 
 module.exports = router;
