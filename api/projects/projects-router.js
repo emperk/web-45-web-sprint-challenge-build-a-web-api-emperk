@@ -35,7 +35,35 @@ router.post('/', validateProject, (req, res, next) => {
 
 // .put()
 
+router.put('/:id', validateProjectId, validateProject, (req, res, next) => {
+  Project.update(req.params.id, { name: req.name, description: req.description })
+    .then(updatedProject => {
+      res.json(updatedProject)
+    })
+    .catch(next)
+})
 
+// .delete()
+
+router.delete('/:id', validateProjectId, async (req, res, next) => {
+  try {
+    await Project.remove(req.params.id)
+    res.json(res.project)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// .get('/:id/actions')
+
+router.get('/:id/actions', validateProjectId, async (req, res, next) => {
+  try {
+    const result = await Project.getProjectActions(req.params.id)
+    res.json(result)
+  } catch (err) {
+    next(err)
+  }
+})
 
 
 module.exports = router;
